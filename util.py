@@ -17,7 +17,6 @@ def calculate_new_positions(x, y, radius):
 
 
 def extract_submatrix(x, y, height, width, image_data, radius, weight):
-
     x_min = x - radius
     # The plus one (+1) is to also include the last element
     x_max = x + radius + 1
@@ -64,11 +63,11 @@ def get_image_data(image):
 
 
 def calculate_new_color(image_data, weight, height, width):
-    soma = np.sum(image_data, axis=1)
+    rgba_sum = np.sum(image_data, axis=(1, 0))
 
     denominator = (height * width - 1) + weight
 
-    new_color = np.round(np.sum(soma, axis=0) / denominator)
+    new_color = np.round(rgba_sum / denominator)
 
     return new_color
 
