@@ -16,32 +16,6 @@ def calculate_new_positions(x, y, radius):
     }
 
 
-def extract_submatrix2(x, y, height, width, image_data, radius, weight):
-
-    x_min = x - radius
-    # The plus one (+1) is to also include the last element
-    x_max = x + radius + 1
-    y_min = y - radius
-    y_max = y + radius + 1
-
-    # Boundary conditions
-    if x_min < 0:
-        x_min = 0
-    elif x_max > width:
-        x_max = width - 1
-    if y_min < 0:
-        y_min = 0
-    elif y_max > height:
-        y_max = height - 1
-
-    # image_data[y][x] = image_data[y][x]*weight
-
-    submatrix = image_data[y_min:y_max, x_min:x_max]
-    height, width, last = submatrix.shape
-
-    return submatrix, height, width
-
-
 def extract_submatrix(x, y, height, width, image_data, radius, weight):
 
     x_min = x - radius
